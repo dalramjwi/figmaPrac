@@ -8,48 +8,6 @@
   <body>
     <div id="root"></div>
     <script>
-      function elementMaker(tagName, styles, textContent) {
-        const element = document.createElement(tagName);
-        for (let value in styles) {
-          element.style[value] = styles[value];
-        }
-        element.textContent = textContent;
-        return element;
-      }
-
-      const root = document.getElementById("root");
-      root.appendChild(
-        elementMaker("div", {
-          width: "30vw",
-          height: "50vh",
-          backgroundColor: "#333",
-          padding: "10px",
-        })
-      );
-      root.children[0].id = "login";
-      const login = document.getElementById("login");
-      login.appendChild(
-        elementMaker(
-          "div",
-          {
-            width: "80%",
-            height: "24px",
-            backgroundColor: "#D9D9D9",
-          },
-          "input"
-        )
-      );
-      login.appendChild(
-        elementMaker(
-          "div",
-          {
-            width: "80%",
-            height: "24px",
-            backgroundColor: "#9AFF92",
-          },
-          "submit"
-        )
-      );
       const elementObj = {
         root: {
           element: "div",
@@ -81,6 +39,51 @@
           text: "submit",
         },
       };
+      function elementMaker(tagName, styles, textContent) {
+        const element = document.createElement(tagName);
+        for (let value in styles) {
+          element.style[value] = styles[value];
+        }
+        element.textContent = textContent;
+        return element;
+      }
+      let objKeys = Object.keys(elementObj);
+      let styles = "sd";
+      let textContent = "";
+      elementMaker(objKeys, styles, textContent);
+      // const root = document.getElementById("root");
+      // root.appendChild(
+      //   elementMaker("div", {
+      //     width: "30vw",
+      //     height: "50vh",
+      //     backgroundColor: "#333",
+      //     padding: "10px",
+      //   })
+      // );
+      // root.children[0].id = "login";
+      // const login = document.getElementById("login");
+      // login.appendChild(
+      //   elementMaker(
+      //     "div",
+      //     {
+      //       width: "80%",
+      //       height: "24px",
+      //       backgroundColor: "#D9D9D9",
+      //     },
+      //     "input"
+      //   )
+      // );
+      // login.appendChild(
+      //   elementMaker(
+      //     "div",
+      //     {
+      //       width: "80%",
+      //       height: "24px",
+      //       backgroundColor: "#9AFF92",
+      //     },
+      //     "submit"
+      //   )
+      // );
     </script>
   </body>
 </html>
