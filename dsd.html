@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      function elementMaker(tagName, styles, textContent) {
+        const element = document.createElement(tagName);
+        for (let value in styles) {
+          element.style[value] = styles[value];
+        }
+        element.textContent = textContent;
+        return element;
+      }
+
+      const root = document.getElementById("root");
+      root.appendChild(
+        elementMaker("div", {
+          width: "30vw",
+          height: "50vh",
+          backgroundColor: "#333",
+          padding: "10px",
+        })
+      );
+      root.children[0].id = "login";
+      const login = document.getElementById("login");
+      login.appendChild(
+        elementMaker(
+          "div",
+          {
+            width: "80%",
+            height: "24px",
+            backgroundColor: "#D9D9D9",
+          },
+          "input"
+        )
+      );
+      login.appendChild(
+        elementMaker(
+          "div",
+          {
+            width: "80%",
+            height: "24px",
+            backgroundColor: "#9AFF92",
+          },
+          "submit"
+        )
+      );
+      const elementData = {
+        widthDecision: (callback) => {
+          let result = "";
+          let value = this.defaultStyles.width;
+          result = callback(value);
+          return result;
+        },
+        root: {
+          style: {
+            width: widthDecision(() => {
+              return value + "vw";
+            }),
+            height: "100vh",
+            backgroundColor: "#fff",
+          },
+          children: {
+            login: {
+              style: {
+                width: "30vw",
+                height: "50vh",
+                backgroundColor: "#333",
+                padding: "10px",
+              },
+              children: {
+                loginInput: {
+                  style: {
+                    width: "80%",
+                    height: "24px",
+                    backgroundColor: "#D9D9D9",
+                  },
+                  textContent: "input",
+                },
+                loginSubmit: {
+                  style: {
+                    width: "80%",
+                    height: "24px",
+                    backgroundColor: "#9AFF92",
+                  },
+                  textContent: "submit",
+                },
+              },
+            },
+          },
+        },
+        defaultStyles: {
+          width: 100,
+          height: 100,
+          backgroundColor: "",
+        },
+        //default 값 추가
+      };
+    </script>
+  </body>
+</html>
