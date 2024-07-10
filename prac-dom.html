@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <div id="login-container">
+        <div id="logininput"></div>
+        <div id="loginsubmit"></div>
+      </div>
+    </div>
+    <script>
+      window.document.body.style.margin = 0;
+      window.document.body.style.padding = 0;
+
+      const root = document.getElementById("root");
+      root.style.width = "100vw";
+      root.style.height = "100vh";
+      root.style.backgroundColor = "#fff";
+      root.style.display = "flex";
+      root.style.justifyContent = "center";
+      root.style.alignItems = "center";
+      root.style.position = "relative";
+
+      const loginContainer = document.getElementById("login-container");
+      loginContainer.style.width = "550px";
+      loginContainer.style.height = "748px";
+      loginContainer.style.backgroundColor = "#666666";
+      loginContainer.style.position = "relative";
+      const loginInput = document.getElementById("logininput");
+      loginInput.style.position = "absolute";
+      loginInput.style.left = "12.95%";
+      loginInput.style.right = "13.13%";
+      loginInput.style.top = "38.24%";
+      loginInput.style.bottom = "50%";
+      loginInput.style.backgroundColor = "#d9d9d9";
+      const loginSubmit = document.getElementById("loginsubmit");
+      loginSubmit.style.position = "absolute";
+      loginSubmit.style.top = "65%";
+      loginSubmit.style.left = "44.96%";
+      loginSubmit.style.right = "13.13%";
+      loginSubmit.style.bottom = "21.39%";
+      loginSubmit.style.backgroundColor = "#9aff92";
+    </script>
+  </body>
+</html>
