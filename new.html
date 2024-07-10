@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- root div, 모든 요소의 루트가 되는 곳 -->
+    <div id="root"></div>
+    <script>
+      // 스타일과 요소 데이터를 정의하는 객체
+      const elementData = {
+        // 요소와 스타일의 데이터를 정의
+        root: {
+          style: {
+            width: "", // 너비를 결정할 함수와 값을 설정할 부분
+            height: "", // 높이를 결정할 함수와 값을 설정할 부분
+            backgroundColor: "", // 배경 색상을 설정할 부분
+          },
+          children: {
+            login: {
+              style: {
+                width: "", // 로그인 컨테이너의 너비를 설정할 부분
+                height: "", // 로그인 컨테이너의 높이를 설정할 부분
+                backgroundColor: "", // 로그인 컨테이너의 배경 색상
+                padding: "10px", // 패딩을 설정할 부분
+              },
+              children: {
+                loginInput: {
+                  style: {
+                    width: "", // 로그인 입력란의 너비
+                    height: "", // 로그인 입력란의 높이
+                    backgroundColor: "", // 로그인 입력란의 배경 색상
+                  },
+                  textContent: "input", // 로그인 입력란의 텍스트
+                },
+                loginSubmit: {
+                  style: {
+                    width: "", // 로그인 제출 버튼의 너비
+                    height: "", // 로그인 제출 버튼의 높이
+                    backgroundColor: "#9AFF92", // 로그인 제출 버튼의 배경 색상
+                  },
+                  textContent: "submit", // 로그인 제출 버튼의 텍스트
+                },
+              },
+            },
+          },
+        },
+        // 기본 스타일 정의
+        defaultStyles: {
+          width: 100,
+          height: 100,
+          backgroundColor: "",
+        },
+        // 스타일을 결정하는 함수들
+        widthDecision: function (value, callback) {
+          return callback(value);
+        },
+        heightDecision: function (value, callback) {
+          return callback(value);
+        },
+        backgroundColorDecision: function (value, callback) {
+          return callback(value);
+        },
+      };
+
+      // 기본 스타일을 `vw` 단위로 설정
+      elementData.root.style.width = elementData.widthDecision(
+        elementData.defaultStyles.width,
+        (value) => {
+          return value + "vw";
+        }
+      );
+      console.log(elementData.root.style.width); // 계산된 너비를 콘솔에 출력
+
+      // 요소를 생성하는 함수
+      function elementMaker(tagName, styles, textContent) {
+        const element = document.createElement(tagName);
+        for (let value in styles) {
+          element.style[value] = styles[value];
+        }
+        element.textContent = textContent;
+        return element;
+      }
+
+      // `root` 요소를 가져와서 스타일과 자식 요소를 추가
+      const root = document.getElementById("root");
+
+      // 루트 요소에 스타일 적용
+      root.appendChild(
+        elementMaker("div", {
+          width: "30vw",
+          height: "50vh",
+          backgroundColor: "#333",
+          padding: "10px",
+        })
+      );
+      // `login`이라는 ID를 가진 자식 요소를 추가
+      root.children[0].id = "login";
+      const login = document.getElementById("login");
+
+      // 로그인 컨테이너에 두 개의 자식 요소를 추가
+      login.appendChild(
+        elementMaker(
+          "div",
+          {
+            width: "80%",
+            height: "24px",
+            backgroundColor: "#D9D9D9",
+          },
+          "input"
+        )
+      );
+      login.appendChild(
+        elementMaker(
+          "div",
+          {
+            width: "80%",
+            height: "24px",
+            backgroundColor: "#9AFF92",
+          },
+          "submit"
+        )
+      );
+      window.localStorage.setItem("login", true);
+    </script>
+  </body>
+</html>
